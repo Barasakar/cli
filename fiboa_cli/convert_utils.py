@@ -179,7 +179,7 @@ def convert(
             log(f"Column '{old_key}' not found in dataset, removing from schema", "warning")
 
     # 6. Rename columns
-    gdf.rename(columns = actual_columns, inplace = True)
+    gdf.rename(columns = actual_columns, inplace = True, errors = 'raise')
 
     # 7. Remove all columns that are not listed
     drop_columns = list(set(gdf.columns) - set(actual_columns.values()))
